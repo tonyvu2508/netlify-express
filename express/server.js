@@ -9,6 +9,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Tony!</h1>');
+  res.write('<h2>This is a test</h2>');
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
