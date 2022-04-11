@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
   res.json({
     hello: "hi!"
   });
+  console.log('Hello World');
 });
 
 app.use(`/.netlify/functions/api`, router);
