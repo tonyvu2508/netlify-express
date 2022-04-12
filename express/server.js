@@ -13,12 +13,16 @@ router.get('/', (req, res) => {
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
-router.get('/api', (req, res) => res.json({ test:"abc" }));
+
 router.post('/', (req, res) => res.json({ postBody: req.body }));
+
+const router2 = express.Router();
+router2.get('/api', (req, res) => res.json({ test:"abc" }));
 
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+app.use('', router2);
 
 module.exports = app;
 module.exports.handler = serverless(app);
